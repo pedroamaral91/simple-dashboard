@@ -8,6 +8,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -15,19 +16,21 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier', 'react-hooks'],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
+  plugins: ['react', '@typescript-eslint', 'react-hooks'],
   rules: {
-    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
     'import/prefer-default-export': 'off',
-    camelcase: 'off',
-    'react/button-has-type': 'off',
-    'react/require-default-props': 'off',
-    'react/forbid-prop-types': 'off',
-    'implicit-arrow-linebreak': 'off',
-    'arrow-parens': 'off',
-    'no-confusing-arrow': 'off',
-    'no-nested-ternary': 'off',
-    'object-curly-newline': 'off',
-    indent: 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.tsx', '.ts'] }],
+    '@typescript-eslint/no-explicit-any': 'off',
+    'react/prop-types': 'off',
+    'import/extensions': 'off',
+    'import/no-named-default': 'off',
+    'arrow-body-style': 'off',
   },
 };
