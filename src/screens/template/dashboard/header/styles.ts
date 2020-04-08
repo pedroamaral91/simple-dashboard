@@ -2,13 +2,15 @@ import styled from 'styled-components';
 import metrics from '../../../../styles/metrics';
 
 export const Container = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 55px;
   min-height: 55px;
-  background-color: ${({ theme }) => theme.semantic.light};
-  display: flex;
-  justify-content: space-between;
   padding: 0 20px;
+  background-color: ${({ theme }) => theme.semantic.light};
+  z-index: 1;
 `;
 
 export const RightContainer = styled.div`

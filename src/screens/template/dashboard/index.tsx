@@ -1,23 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 
 import Header from './header';
 import Aside from './aside';
-import { Container, Content } from './styles';
+import { TemplateContext } from './context';
+import { Container, Content, Wrapper } from './styles';
 
-
-const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <Container>
-    <Header />
-    <Content>
-      <Aside />
-      {children}
-    </Content>
-  </Container>
-);
-
-Dashboard.propTypes = {
-  children: PropTypes.any.isRequired,
+const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { state } = useContext(TemplateContext);
+  console.log('teste', state.showAside);
+  return (
+    <Container>
+      <Header />
+      <Content>
+        <Aside />
+        <Wrapper isOpen={state.showAside}>{children}</Wrapper>
+      </Content>
+    </Container>
+  );
 };
 
 export default React.memo(Dashboard);

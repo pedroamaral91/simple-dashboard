@@ -19,6 +19,7 @@
     "react-app-rewire-styled-components": "^3.0.2",
     "react-app-rewired": "^2.1.5",
     "react-dom": "^16.13.0",
+    "react-export-excel": "^0.5.3",
     "react-hot-loader": "^4.12.20",
     "react-icons": "^3.9.0",
     "react-redux": "^7.2.0",

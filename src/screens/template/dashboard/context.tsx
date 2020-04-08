@@ -7,21 +7,21 @@ interface InitialState {
 
 const initialState = {
   showAside: true,
-}
+};
 
 interface ContextI {
   state: InitialState;
-  dispatch: React.Dispatch<any>
+  dispatch: React.Dispatch<any>;
 }
 
 const contextState = {
   state: initialState,
-  dispatch: () => null
-}
+  dispatch: () => null,
+};
 
 type ActionTemplate = {
-  type: 'SHOW_ASIDE' | 'HIDE_ASIDE'
-}
+  type: 'SHOW_ASIDE' | 'HIDE_ASIDE';
+};
 
 const reducer = (state: InitialState, action: ActionTemplate) => {
   switch (action.type) {

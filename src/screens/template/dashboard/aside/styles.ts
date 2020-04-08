@@ -6,17 +6,18 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  @media only screen and (min-width: ${metrics.mobileS}) {
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    width: ${({ isOpen }) => (isOpen ? '180px' : 0)};
-    height: 100vh;
-    transition: width 0.2s ease;
-  }
-  @media only screen and (min-width: ${metrics.tablet}) {
-    position: relative;
-  }
+  position: fixed;
+  width: ${({ isOpen }) => (isOpen ? '180px' : 0)};
+  height: 100%;
+  transition: width 0.2s ease;
+`;
+
+export const MenuAside = styled.div`
+  display: flex;
+  background-color: ${({ theme }) => theme.semantic.dark};
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 `;
 
 export const Opacity = styled.div<ContainerProps>`
@@ -35,14 +36,5 @@ export const Opacity = styled.div<ContainerProps>`
   }
   @media only screen and (min-width: ${metrics.tablet}) {
     display: none;
-  }
-`;
-
-export const MenuAside = styled.div`
-  @media only screen and (min-width: ${metrics.mobileS}) {
-    display: flex;
-    background-color: ${({ theme }) => theme.semantic.dark};
-    overflow: hidden;
-    width: 100%;
   }
 `;
