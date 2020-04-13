@@ -33,4 +33,8 @@ export default {
       dark: '#121416',
     },
   },
+  focus: {
+    danger: '0 0 0 0.2rem rgba(220, 53, 69, 0.25)',
+    primary: '0 0 0 0.2rem rgba(38, 143, 255, 0.5)',
+  },
 };
