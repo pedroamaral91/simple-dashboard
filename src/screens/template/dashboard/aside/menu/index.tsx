@@ -7,11 +7,10 @@ import { MenuWrapper } from '../../../../../components/menu';
 import MenuItemWired from './menu-item-wired';
 import MenuListWired from './menu-list-wired';
 
-
 const Menu: React.FC = () => {
   const renderedMenu = useMemo(
     () =>
-      navItems.items.map((item) =>
+      navItems.items.map(item =>
         item.children ? (
           <MenuListWired
             key={item.title}

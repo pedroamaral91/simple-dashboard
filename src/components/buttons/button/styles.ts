@@ -5,7 +5,7 @@ interface ContainerProps {
 }
 
 export const Container = styled.button.attrs(({ type }: ContainerProps) => ({
-  type
+  type,
 }))`
   width: 100%;
   height: 100%;

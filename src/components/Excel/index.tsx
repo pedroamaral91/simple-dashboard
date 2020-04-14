@@ -1,16 +1,16 @@
 import React from 'react';
-
+import ReactExport from 'react-export-excel';
 import { FaFileExcel } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+
 import { Container } from './styles';
 
-import ReactExport from 'react-export-excel';
 const { ExcelFile } = ReactExport;
 const { ExcelSheet } = ReactExport.ExcelFile;
 const { ExcelColumn } = ReactExport.ExcelFile;
 
 interface ExcelProps {
-  data: Object[];
+  data: Record<string, any>[];
   columns: [
     {
       label: string;

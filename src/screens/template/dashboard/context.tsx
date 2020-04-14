@@ -1,5 +1,4 @@
 import React, { createContext, useReducer } from 'react';
-import PropTypes from 'prop-types';
 
 interface InitialState {
   showAside: boolean;
@@ -48,10 +47,6 @@ const TemplateProvider: React.FC<TemplateProviderProps> = ({ children }) => {
       {children}
     </TemplateContext.Provider>
   );
-};
-
-TemplateProvider.propTypes = {
-  children: PropTypes.any,
 };
 
 export { TemplateProvider, TemplateContext };

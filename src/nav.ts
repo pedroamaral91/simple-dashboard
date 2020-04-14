@@ -2,17 +2,17 @@ interface Item {
   label: string;
   icon: string;
   route: string;
-  children?: undefined
+  children?: undefined;
 }
 
 interface Title {
   title: string;
   icon: string;
-  children: Item[]
+  children: Item[];
 }
 
 interface Nav {
-  items: (Item | Title)[]
+  items: (Item | Title)[];
 }
 
 const dashboard: Item = {
@@ -51,7 +51,7 @@ const relatorios: Title = {
 };
 
 const nav: Nav = {
-  items: [dashboard, modulos, relatorios]
-}
+  items: [dashboard, modulos, relatorios],
+};
 
 export default nav;

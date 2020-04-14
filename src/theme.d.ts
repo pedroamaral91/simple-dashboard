@@ -11,7 +11,7 @@ declare module 'styled-components' {
       danger: string;
       light: string;
       dark: string;
-    },
+    };
     text: {
       colors: {
         primary: string;
@@ -24,7 +24,7 @@ declare module 'styled-components' {
         dark: string;
         body: string;
         muted: string;
-      },
+      };
       hover: {
         primary: string;
         secondary: string;
@@ -34,7 +34,7 @@ declare module 'styled-components' {
         danger: string;
         light: string;
         dark: string;
-      },
-    },
+      };
+    };
   }
 }

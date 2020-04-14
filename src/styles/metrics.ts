@@ -1,4 +1,3 @@
-
 export default {
   mobileS: '320px',
   mobileM: '375px',

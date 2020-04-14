@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Route, Redirect, useLocation } from 'react-router-dom';
 
 import { Dashboard } from '../screens/template';
@@ -11,7 +10,11 @@ interface PrivateRoutesProps {
   path: string;
 }
 
-const PrivateRoutes: React.FC<PrivateRoutesProps> = ({ component: Component, exact, path }) => {
+const PrivateRoutes: React.FC<PrivateRoutesProps> = ({
+  component: Component,
+  exact,
+  path,
+}) => {
   const location = useLocation();
 
   if (location.pathname === '/') return <Redirect to="/dashboard" />;
@@ -23,10 +26,6 @@ const PrivateRoutes: React.FC<PrivateRoutesProps> = ({ component: Component, exa
       </Dashboard>
     </Route>
   );
-};
-
-PrivateRoutes.propTypes = {
-  component: PropTypes.any.isRequired,
 };
 
 export default PrivateRoutes;

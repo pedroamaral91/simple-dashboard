@@ -1,15 +1,17 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import { authCreators } from './duck';
-import { AuthTypes } from './types';
+import { AuthTypes, AuthSignInRequestAction } from './types';
 
 import api from '../../../services/api';
-import { AuthSignInRequestAction } from './types';
 
 function* signIn({ payload }: AuthSignInRequestAction): Generator {
   try {
     const { email, password } = payload;
-    const response: any = yield call(api.post, '/user/login', { email, password });
+    const response: any = yield call(api.post, '/user/login', {
+      email,
+      password,
+    });
     const { token, id, name } = response.data.data;
     yield put(authCreators.signInSuccess(token, { id, name }));
     api.defaults.headers.Authorization = `Bearer ${token}`;

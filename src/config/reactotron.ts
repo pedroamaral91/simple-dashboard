@@ -8,8 +8,9 @@ if (process.env.NODE_ENV === 'development') {
     .use(reactotronRedux())
     .use(gambi())
     .connect();
-    
-    tron.clear();
-    
-    console.tron = tron;
+
+  tron.clear();
+
+  // eslint-disable-next-line no-console
+  console.tron = tron;
 }

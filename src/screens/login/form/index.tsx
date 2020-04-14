@@ -16,13 +16,19 @@ const Form: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleChangeEmail = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
-    setEmail(e.target.value);
-  }, []);
+  const handleChangeEmail = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>): void => {
+      setEmail(e.target.value);
+    },
+    [],
+  );
 
-  const handleChangePassword = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
-    setPassword(e.target.value);
-  }, []);
+  const handleChangePassword = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>): void => {
+      setPassword(e.target.value);
+    },
+    [],
+  );
 
   const handleSubmit = useCallback(() => {
     dispatch(signInRequest(email, password));

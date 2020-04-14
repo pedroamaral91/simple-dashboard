@@ -11,7 +11,13 @@ interface InputIcon {
   onChange(e: React.ChangeEvent<HTMLInputElement>): void;
 }
 
-const InputIcon: React.FC<InputIcon> = ({ icon, placeholder, type = 'text', value, onChange }) => (
+const InputIcon: React.FC<InputIcon> = ({
+  icon,
+  placeholder,
+  type = 'text',
+  value,
+  onChange,
+}) => (
   <Container>
     <IconWrapper>
       <Icon icon={icon} />

@@ -9,7 +9,12 @@ interface ButtonLoaderProps {
   onClick(e: React.MouseEvent): void;
 }
 
-const ButtonLoader: React.FC<ButtonLoaderProps> = ({ isLoading, label, type = 'button', onClick }) => (
+const ButtonLoader: React.FC<ButtonLoaderProps> = ({
+  isLoading,
+  label,
+  type = 'button',
+  onClick,
+}) => (
   <Container type={type} isLoading={isLoading} onClick={onClick}>
     {isLoading ? <Loader /> : label}
   </Container>

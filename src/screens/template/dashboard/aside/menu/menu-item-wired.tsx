@@ -9,7 +9,11 @@ interface MenuItemWiredProps {
   route: string;
 }
 
-const MenuItemWired: React.FC<MenuItemWiredProps> = ({ label, icon, route }) => {
+const MenuItemWired: React.FC<MenuItemWiredProps> = ({
+  label,
+  icon,
+  route,
+}) => {
   const history = useHistory();
   const location = useLocation();
   const isActive = route === location.pathname;

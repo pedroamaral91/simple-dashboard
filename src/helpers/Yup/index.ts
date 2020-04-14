@@ -1,6 +1,10 @@
 import * as yup from 'yup';
 
-export const validateForm = async (schema: yup.ObjectSchema, data: object) => {
+export const validateForm = async (
+  schema: yup.ObjectSchema,
+  data: object,
+  // eslint-disable-next-line consistent-return
+): Promise<any> => {
   try {
     await schema?.validate(data, {
       abortEarly: false,

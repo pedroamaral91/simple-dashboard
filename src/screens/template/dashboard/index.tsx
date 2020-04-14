@@ -7,7 +7,7 @@ import { Container, Content, Wrapper } from './styles';
 
 const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { state } = useContext(TemplateContext);
-  console.log('teste', state.showAside);
+
   return (
     <Container>
       <Header />

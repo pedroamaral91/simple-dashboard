@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface ContainerProps {
-  isOpen: boolean
+  isOpen: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`

@@ -7,6 +7,8 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
     'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
   globals: {
     Atomics: 'readonly',
@@ -36,5 +38,11 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-named-default': 'off',
     'arrow-body-style': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'no-nested-ternary': 'off',
+    'react/jsx-wrap-multilines': [
+      'error',
+      { arrow: true, return: true, declaration: true },
+    ],
   },
 };

@@ -13,7 +13,7 @@ import {
 interface MenuListProps {
   title: string;
   icon: React.ReactNode;
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const MenuList: React.FC<MenuListProps> = ({ title, icon, children }) => {

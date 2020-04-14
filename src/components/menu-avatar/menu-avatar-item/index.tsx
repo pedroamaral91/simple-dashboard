@@ -7,7 +7,7 @@ import Icon from '../../icons';
 interface MenuAvatarItem {
   icon: string;
   label: string;
-  badge?: React.ReactNode
+  badge?: React.ReactNode;
 }
 
 const MenuAvatarItem: React.FC<MenuAvatarItem> = ({ icon, label, badge }) => (

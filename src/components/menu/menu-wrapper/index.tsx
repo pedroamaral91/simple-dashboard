@@ -6,6 +6,8 @@ interface MenuWrapperProps {
   children: React.ReactNode;
 }
 
-const MenuWrapper: React.FC<MenuWrapperProps> = ({ children }) => <Container>{children}</Container>;
+const MenuWrapper: React.FC<MenuWrapperProps> = ({ children }) => (
+  <Container>{children}</Container>
+);
 
 export default MenuWrapper;

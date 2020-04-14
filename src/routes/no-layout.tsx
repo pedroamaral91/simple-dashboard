@@ -8,7 +8,11 @@ interface NoLaoyutProps {
   path: string;
 }
 
-const NoLayout: React.FC<NoLaoyutProps> = ({ component: Component, exact, path }) => (
+const NoLayout: React.FC<NoLaoyutProps> = ({
+  component: Component,
+  exact,
+  path,
+}) => (
   <Route exact={exact} path={path}>
     <Component />
   </Route>

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useCallback, useRef } from 'react';
 
 import { Container, IconContainer, Link } from './styles';
@@ -12,7 +13,12 @@ interface MenuItemProps {
   handleClick(e: React.MouseEvent): void;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ icon, route, label, handleClick, isActive }) => {
+const MenuItem: React.FC<MenuItemProps> = ({
+  icon,
+  label,
+  handleClick,
+  isActive,
+}) => {
   const wrapperRef = useRef(null);
   const [lastClicked, setLastClicked] = useState(false);
   const onClick = useCallback(

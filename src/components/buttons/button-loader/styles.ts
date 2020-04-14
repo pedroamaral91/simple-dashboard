@@ -4,13 +4,15 @@ import loaderImage from '../../../assets/loader.png';
 
 interface ContainerProps {
   isLoading: boolean;
-  type: string
+  type: string;
 }
 
-export const Container = styled(Button).attrs(({ isLoading, type }: ContainerProps) => ({
-  disabled: isLoading,
-  type
-}))<ContainerProps>`
+export const Container = styled(Button).attrs(
+  ({ isLoading, type }: ContainerProps) => ({
+    disabled: isLoading,
+    type,
+  }),
+)<ContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;

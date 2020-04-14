@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
 
 import { MenuList } from '../../../../../components/menu';
 import Icon from '../../../../../components/icons';
@@ -15,7 +14,7 @@ interface List {
 interface MenuListWiredProps {
   title: string;
   icon: string;
-  list: List[]
+  list: List[];
 }
 
 const MenuListWired: React.FC<MenuListWiredProps> = ({ title, icon, list }) => {
@@ -37,12 +36,6 @@ const MenuListWired: React.FC<MenuListWiredProps> = ({ title, icon, list }) => {
       {renderedList}
     </MenuList>
   );
-};
-
-MenuListWired.propTypes = {
-  title: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-  list: PropTypes.array.isRequired,
 };
 
 export default MenuListWired;
