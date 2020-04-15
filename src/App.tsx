@@ -5,6 +5,7 @@ import './config/reactotron';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Routes from './routes';
+import ModalGate from './screens/template/modal';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Switch>
         <Routes />
       </Switch>
+      <ModalGate />
     </BrowserRouter>
   );
 }
