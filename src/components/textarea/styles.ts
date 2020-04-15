@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import icon from '../../../assets/error.svg';
 
 /* Interfaces */
-interface InputProps {
+interface AreaInputProps {
   error: string;
 }
 
@@ -12,6 +11,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 5px;
+
+  width: 100%;
 `;
 
 export const Label = styled.label`
@@ -20,36 +21,16 @@ export const Label = styled.label`
   color: ${props => props.theme.text.colors.dark};
 `;
 
-export const WrapperInput = styled.div`
-  display: flex;
-  position: relative;
-  width: 100%;
-
-  justify-content: center;
-  align-items: center;
-`;
-
-export const IconWrapper = styled.div`
-  position: absolute;
-  top: 22%;
-  left: 0.2rem;
-  color: ${({ theme }) => theme.semantic.secondary};
-`;
-
-export const Input = styled.input<InputProps>`
+export const AreaInput = styled.textarea<AreaInputProps>`
   display: block;
 
-  padding: 0.375rem 1.2rem;
+  resize: vertical;
+
+  padding: 0.375rem 0.75rem;
   padding-right: calc(1.5em + 0.75rem);
 
   /* background styles */
   background-color: ${props => props.theme.semantic.light};
-  background-clip: padding-box;
-
-  background-image: ${props => (props.error ? `url(${icon})` : 'none')};
-  background-repeat: no-repeat;
-  background-position: right calc(0.375em + 0.1875rem) center;
-  background-size: calc(0.75em + 0.375rem);
   background-clip: padding-box;
 
   /* font styles */
@@ -68,11 +49,11 @@ export const Input = styled.input<InputProps>`
   &:focus {
     outline: 0;
     box-shadow: ${props =>
-      props.error ? props.theme.focus.danger : props.theme.focus.primary};
+    props.error ? props.theme.focus.danger : props.theme.focus.primary};
     border: ${props =>
-      props.error
-        ? `1px solid ${props.theme.semantic.danger}}`
-        : `1px solid ${props.theme.semantic.primary}}`};
+    props.error
+     ? `1px solid ${props.theme.semantic.danger}}`
+     : `1px solid ${props.theme.semantic.primary}}`};
   }
 
   &::placeholder {
