@@ -44,5 +44,7 @@ module.exports = {
       'error',
       { arrow: true, return: true, declaration: true },
     ],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
 };
