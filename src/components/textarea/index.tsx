@@ -1,32 +1,26 @@
 import React from 'react';
 
-import { Container, Label, Input, InvalidFeedback } from './styles';
+import { Container, Label, AreaInput, InvalidFeedback } from './styles';
 
-export interface InputProps {
-  name: string;
+export interface TextareaProps {
   value: string | number;
-
-  onChange(e: React.ChangeEvent<HTMLInputElement>): void;
+  onChange(e: React.ChangeEvent<HTMLTextAreaElement>): void;
   label?: string;
   placeholder?: string;
-
   error?: string;
-
   width?: string;
   height?: string;
   type?: 'text' | 'password' | 'number';
 }
 
-const InputText: React.FC<InputProps> = ({
+const Textarea: React.FC<TextareaProps> = ({
   label = '',
-  name,
   value,
   placeholder = '',
   onChange,
   error = '',
   width,
   height,
-  type = 'text',
 }) => {
   return (
     <Container style={{ width, height }}>
@@ -35,10 +29,9 @@ const InputText: React.FC<InputProps> = ({
         &nbsp;
       </Label>
 
-      <Input
+      <AreaInput
+        rows={4}
         error={error}
-        type={type}
-        name={name}
         value={value}
         placeholder={placeholder}
         onChange={onChange}
@@ -49,4 +42,4 @@ const InputText: React.FC<InputProps> = ({
   );
 };
 
-export default React.memo(InputText);
+export default React.memo(Textarea);
