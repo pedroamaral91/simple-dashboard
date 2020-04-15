@@ -18,10 +18,6 @@ export const Container = styled.div`
 
 export const ModalContent = styled.div`
   z-index: 98;
-  display: flex;
-  flex-direction: column;
-  background-color: ${({ theme }) => theme.semantic.light};
-  border-radius: 7px;
 `;
 
 export const BackgroundOverlay = styled.div<OverlayProps>`
