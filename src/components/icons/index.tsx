@@ -11,6 +11,7 @@ import {
   FaLock,
   FaDelicious,
   FaUserAlt,
+  FaArrowDown,
 } from 'react-icons/fa';
 import { MdPeople } from 'react-icons/md';
 
@@ -20,6 +21,7 @@ interface IconProps {
 
 const Icon: React.FC<IconProps> = ({ icon }) => {
   const icons = new Map([
+    ['fa-arrow-down', <FaArrowDown />],
     ['fa-skating', <FaSkating />],
     ['FaCubes', <FaCubes />],
     ['MdPeople', <MdPeople />],

@@ -1,12 +1,9 @@
 import styled from 'styled-components';
-import icon from '../../../assets/error.svg';
 
 /* Interfaces */
 interface InputProps {
   error: string;
 }
-
-/* Components */
 
 export const Container = styled.div`
   display: flex;
@@ -20,43 +17,36 @@ export const Label = styled.label`
   color: ${props => props.theme.text.colors.dark};
 `;
 
-export const WrapperInput = styled.div`
-  display: flex;
+export const WrapperSelect = styled.div`
   position: relative;
-  width: 100%;
-
-  justify-content: center;
-  align-items: center;
 `;
 
 export const IconWrapper = styled.div`
   position: absolute;
-  top: 22%;
-  left: 0.2rem;
+  top: 25%;
+  left: 90%;
+
   color: ${({ theme }) => theme.semantic.secondary};
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 export const Input = styled.input<InputProps>`
   display: block;
 
-  padding: 0.375rem 1.2rem;
+  padding: 0.375rem 0.75rem;
   padding-right: calc(1.5em + 0.75rem);
 
   /* background styles */
   background-color: ${props => props.theme.semantic.light};
   background-clip: padding-box;
 
-  background-image: ${props => (props.error ? `url(${icon})` : 'none')};
-  background-repeat: no-repeat;
-  background-position: right calc(0.375em + 0.1875rem) center;
-  background-size: calc(0.75em + 0.375rem);
-  background-clip: padding-box;
-
   /* font styles */
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: ${props => props.theme.semantic.dark};
+  color: ${props => props.theme.text.colors.dark};
 
   border: ${props =>
     props.error
@@ -77,6 +67,28 @@ export const Input = styled.input<InputProps>`
 
   &::placeholder {
     opacity: 1;
+  }
+`;
+export const List = styled.div`
+  width: 100%;
+  background: ${props => props.theme.semantic.light};
+  z-index: 99;
+  position: absolute;
+  min-height: 40px;
+  overflow: auto;
+  margin-top: 5px;
+  border: ${props => `1px solid ${props.theme.semantic.secondary}}}`};
+  border-radius: 4px;
+  padding: 5px 0;
+`;
+
+export const Option = styled.div`
+  padding: 4px;
+  cursor: pointer;
+  color: ${props => props.theme.text.colors.dark};
+  &:hover {
+    color: ${props => props.theme.text.colors.light};
+    background: ${props => props.theme.semantic.primary};
   }
 `;
 
