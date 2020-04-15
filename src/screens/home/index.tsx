@@ -1,37 +1,25 @@
-import React, { useState, useCallback } from 'react';
-
-import { NestedEmails } from '../../components/nested';
-
-interface Email {
-  id: string;
-  email: string;
-}
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { modalCreators } from '../../store/state';
 
 const Home = () => {
-  const [emails, setEmails] = useState<Email[]>([]);
+  const dispatch = useDispatch();
 
-  const handleChangeEmails = useCallback(
-    values => {
-      setEmails(values);
-    },
-    [emails],
-  );
+  const closeModal = useCallback(() => {
+    dispatch(modalCreators.modalClose('SimpleModal'));
+  }, [dispatch]);
+
+  const onClick = useCallback(() => {
+    dispatch(modalCreators.modalOpen('SimpleModal', { closeModal }));
+  }, [dispatch, closeModal]);
+
   return (
-    <>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        {emails.map(email => {
-          return <p> {JSON.stringify(email)}</p>;
-        })}
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <NestedEmails
-          onChange={handleChangeEmails}
-          label="Emails"
-          values={emails}
-        />
-      </div>
-    </>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <h1>Home</h1>
+      <button type="button" onClick={onClick}>
+        teste
+      </button>
+    </div>
   );
 };
 
