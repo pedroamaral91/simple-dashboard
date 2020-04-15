@@ -1,16 +1,22 @@
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { modalCreators } from '../../store/state';
+import React, { useState } from 'react';
+import { SelectCommon } from '../../components/select';
 
 const Home = () => {
-  const dispatch = useDispatch();
+  const [category, setCategory] = useState('');
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const closeModal = useCallback(() => {
-    dispatch(modalCreators.modalClose('SimpleModal'));
-  }, [dispatch]);
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <h1>Hoome</h1>
+      <h1>Hoome</h1>
 
-  return <div style={{ display: 'none', flexDirection: 'column' }} />;
+      <SelectCommon
+        label="teste"
+        value={category}
+        onChange={setCategory}
+        options={[{ value: 1, label: 'teste' }]}
+      />
+    </div>
+  );
 };
 
 export default Home;
