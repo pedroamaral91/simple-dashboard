@@ -38,6 +38,7 @@ const Form: React.FC = () => {
     <FormContainer>
       <WrapperInput>
         <InputIcon
+          name="email"
           icon="FaUserAlt"
           placeholder="Digite seu e-mail"
           value={email}
@@ -46,6 +47,7 @@ const Form: React.FC = () => {
       </WrapperInput>
       <WrapperInput>
         <InputIcon
+          name="password"
           icon="FaLock"
           placeholder="Digite sua senha"
           type="password"

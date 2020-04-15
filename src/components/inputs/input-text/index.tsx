@@ -1,25 +1,52 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import { Container, Label, Input } from './styles';
+import { Container, Label, Input, InvalidFeedback } from './styles';
 
-interface InputText {
-  label: string;
-  value: string;
+export interface InputProps {
+  name: string;
+  value: string | number;
+
   onChange(e: React.ChangeEvent<HTMLInputElement>): void;
+  label?: string;
+  placeholder?: string;
+
+  error?: string;
+
+  width?: string;
+  height?: string;
+  type?: 'text' | 'password' | 'number';
 }
 
-const InputText: React.FC<InputText> = ({ label, onChange, value }) => (
-  <Container>
-    <Label>{label}</Label>
-    <Input type="text" onChange={onChange} value={value} />
-  </Container>
-);
+const InputText: React.FC<InputProps> = ({
+  label = '',
+  name,
+  value,
+  placeholder = '',
+  onChange,
+  error = '',
+  width,
+  height,
+  type = 'text',
+}) => {
+  return (
+    <Container style={{ width, height }}>
+      <Label>
+        {label}
+        &nbsp;
+      </Label>
 
-InputText.propTypes = {
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+      <Input
+        error={error}
+        type={type}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
+
+      {error && <InvalidFeedback>{error}</InvalidFeedback>}
+    </Container>
+  );
 };
 
-export default InputText;
+export default React.memo(InputText);
