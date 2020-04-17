@@ -49,11 +49,11 @@ export const AreaInput = styled.textarea<AreaInputProps>`
   &:focus {
     outline: 0;
     box-shadow: ${props =>
-    props.error ? props.theme.focus.danger : props.theme.focus.primary};
+      props.error ? props.theme.focus.danger : props.theme.focus.primary};
     border: ${props =>
-    props.error
-     ? `1px solid ${props.theme.semantic.danger}}`
-     : `1px solid ${props.theme.semantic.primary}}`};
+      props.error
+        ? `1px solid ${props.theme.semantic.danger}}`
+        : `1px solid ${props.theme.semantic.primary}}`};
   }
 
   &::placeholder {
