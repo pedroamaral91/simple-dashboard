@@ -18,7 +18,7 @@ const EmailItem: React.FC<EmailItemProps> = ({
 }) => {
   return (
     <ItemContainer>
-      <InputText
+      {/* <InputText
         onBlur={onBlur}
         name="email"
         onChange={onChange}
@@ -28,7 +28,7 @@ const EmailItem: React.FC<EmailItemProps> = ({
       />
       <DeleteButton type="button" onClick={handleDelete}>
         <Icon icon="FaTrash" />
-      </DeleteButton>
+      </DeleteButton> */}
     </ItemContainer>
   );
 };

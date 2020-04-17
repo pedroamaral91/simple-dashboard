@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 
-import { MenuList } from '../../../../../components/menu';
-import Icon from '../../../../../components/icons';
+import { MenuList } from '@components/menu';
+import Icon from '@components/icons';
 
 import MenuItemWired from './menu-item-wired';
 

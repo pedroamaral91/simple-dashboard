@@ -6,7 +6,7 @@ interface ButtonLoaderProps {
   isLoading: boolean;
   label: string;
   type?: string;
-  onClick(e: React.MouseEvent): void;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 const ButtonLoader: React.FC<ButtonLoaderProps> = ({

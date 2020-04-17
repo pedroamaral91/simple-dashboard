@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { lazy, useCallback, useMemo, Suspense } from 'react';
+import React, { useCallback, useMemo, Suspense, lazy } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { modalCreators, modalSelectors } from '../../../store/state';
@@ -18,11 +18,10 @@ const ModalGate: React.FC = () => {
 
   const modals = new Map([
     [
-      'SimpleModal',
+      'DisplayErrorsForm',
       lazy(() =>
         import(
-          /* webpackChunkName: "SimpleModal" */
-          '../../../components/modals/simple-modal'
+          '../../modules/natural-person-register/form-natural-person/modal/display-errors-form'
         ),
       ),
     ],

@@ -27,7 +27,7 @@ const modulos: Title = {
   children: [
     {
       icon: 'MdPeople',
-      route: '/modulos/pessoa-fisica',
+      route: '/modulos/pessoafisica',
       label: 'Pessoa Física',
     },
     {

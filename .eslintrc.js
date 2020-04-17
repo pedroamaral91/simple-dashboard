@@ -24,6 +24,7 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
+      typescript: {},
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
@@ -39,6 +40,7 @@ module.exports = {
     'import/no-named-default': 'off',
     'arrow-body-style': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
     'no-nested-ternary': 'off',
     'react/jsx-wrap-multilines': [
       'error',
@@ -46,5 +48,8 @@ module.exports = {
     ],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/camelcase': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    '@typescript-eslint/interface-name-prefix': 'off',
   },
 };

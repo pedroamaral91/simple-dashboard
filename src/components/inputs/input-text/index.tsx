@@ -1,58 +1,35 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-import { Container, Label, Input, InvalidFeedback } from './styles';
+import { FieldError } from 'react-hook-form';
+import { Container, Label, Input, LabelError } from './styles';
 
-export interface InputProps {
+interface InputTextProps {
+  label: string;
   name: string;
-  value: string | number;
-
-  onChange(e: React.ChangeEvent<HTMLInputElement>): void;
-  label?: string;
-  placeholder?: string;
-
-  error?: string;
-
-  width?: string;
-  height?: string;
-  type?: 'text' | 'password' | 'number';
-  onBlur?(): void;
+  error?: FieldError;
+  defaultValue?: string;
   disabled?: boolean;
 }
 
-const InputText: React.FC<InputProps> = ({
-  label = '',
-  name,
-  value,
-  placeholder = '',
-  onChange,
-  error = '',
-  width,
-  height,
-  type = 'text',
-  onBlur,
-  disabled = false,
-}) => {
-  return (
-    <Container style={{ width, height }}>
-      <Label>
-        {label}
-        &nbsp;
-      </Label>
+type Ref = HTMLInputElement;
 
+const InputText = forwardRef<Ref, InputTextProps>(
+  ({ label, name, error, defaultValue, disabled }, ref) => (
+    <Container>
+      <Label>{label}</Label>
       <Input
-        error={error}
-        type={type}
+        type="text"
+        ref={ref}
         name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        onBlur={onBlur}
+        defaultValue={defaultValue}
         disabled={disabled}
       />
-
-      {error && <InvalidFeedback>{error}</InvalidFeedback>}
+      <LabelError>
+        {error?.message}
+        &nbsp;
+      </LabelError>
     </Container>
-  );
-};
+  ),
+);
 
 export default React.memo(InputText);

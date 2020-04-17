@@ -1,15 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
-  FaSkating,
-  FaCubes,
-  FaUserPlus,
-  FaRegFileAlt,
-  FaMoneyBillWave,
+  FaAngleUp,
+  FaAngleDown,
   FaCog,
-  FaLock,
+  FaCubes,
   FaDelicious,
+  FaLock,
+  FaMinus,
+  FaMoneyBillWave,
+  FaRegFileAlt,
+  FaSkating,
+  FaUserPlus,
   FaUserAlt,
   FaArrowDown,
   FaTrash,
@@ -33,20 +35,27 @@ const Icon: React.FC<IconProps> = ({ icon }) => {
     ['FaUserAlt', <FaUserAlt />],
     ['FaRegFileAlt', <FaRegFileAlt />],
     ['FaMoneyBillWave', <FaMoneyBillWave />],
+    ['FaAngleUp', <FaAngleUp />],
+    ['FaAngleDown', <FaAngleDown />],
     ['FaCog', <FaCog />],
-    ['FaLock', <FaLock />],
+    ['FaCubes', <FaCubes />],
     ['FaDelicious', <FaDelicious />],
     ['FaTrash', <FaTrash />],
     ['FaPlus', <FaPlus />],
     ['FaFileImport', <FaFileImport />],
     ['FaTimesCircle', <FaTimesCircle />],
+    ['FaLock', <FaLock />],
+    ['FaMinus', <FaMinus />],
+    ['FaMoneyBillWave', <FaMoneyBillWave />],
+    ['FaPlus', <FaPlus />],
+    ['FaRegFileAlt', <FaRegFileAlt />],
+    ['FaUserAlt', <FaUserAlt />],
+    ['FaUserPlus', <FaUserPlus />],
+    ['MdPeople', <MdPeople />],
+    ['fa-skating', <FaSkating />],
   ]);
 
   return <>{icons.has(icon) ? icons.get(icon) : null}</>;
-};
-
-Icon.propTypes = {
-  icon: PropTypes.string.isRequired,
 };
 
 export default Icon;

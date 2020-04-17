@@ -1,65 +1,88 @@
-import React, { useCallback } from 'react';
+import React, { forwardRef } from 'react';
+import { FieldError } from 'react-hook-form';
+import { Map } from 'immutable';
 
-import { Container, Label, Input, InvalidFeedback } from '../input-text/styles';
-import { MaskType, handleMaskedValue } from '../../../helpers/Mask';
+import { Container, Label, Input, InvalidFeedback } from './styles';
 
+type MasksType = 'cep' | 'cpf';
 export interface InputProps {
   name: string;
-  value: string | number;
-
-  onChange(e: React.ChangeEvent<HTMLInputElement>): void;
+  defaultValue?: string | number;
   label?: string;
   placeholder?: string;
-
-  error?: string;
-
+  error?: FieldError;
   width?: string;
   height?: string;
-  type?: string;
-  mask: MaskType;
-  onBlur?(): void;
+  type?: 'text' | 'password' | 'number';
+  mask: MasksType;
+  onBlur?: () => void;
+  control: any;
 }
 
-const InputMask: React.FC<InputProps> = ({
-  label = '',
-  name,
-  value,
-  placeholder = '',
-  onChange,
-  error = '',
-  width,
-  height,
-  type = 'text',
-  onBlur,
-  mask,
-}) => {
-  const handleChange = useCallback(
-    e => {
-      e.target.value = handleMaskedValue(mask, e.target.value);
-      onChange(e);
+type Ref = HTMLInputElement;
+
+const masks = Map({
+  cpf: [
+    /\d/,
+    /\d/,
+    /\d/,
+    '.',
+    /\d/,
+    /\d/,
+    /\d/,
+    '.',
+    /\d/,
+    /\d/,
+    /\d/,
+    '-',
+    /\d/,
+    /\d/,
+  ],
+  cep: [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/],
+});
+
+const InputMask = forwardRef<Ref, InputProps>(
+  (
+    {
+      label = '',
+      name,
+      placeholder = '',
+      error,
+      defaultValue,
+      width,
+      height,
+      type = 'text',
+      mask,
+      onBlur,
+      control,
+      ...rest
     },
-    [onChange, mask],
-  );
-  return (
-    <Container style={{ width, height }}>
-      <Label>
-        {label}
-        &nbsp;
-      </Label>
-
-      <Input
-        error={error}
-        type={type}
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={handleChange}
-        onBlur={onBlur}
-      />
-
-      {error && <InvalidFeedback>{error}</InvalidFeedback>}
-    </Container>
-  );
-};
+    ref,
+  ) => {
+    return (
+      <Container style={{ width, height }}>
+        <Label>
+          {label}
+          &nbsp;
+        </Label>
+        <Input
+          type={type}
+          name={name}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          control={control}
+          mask={masks.get(mask)!}
+          onBlur={onBlur}
+          ref={ref}
+          {...rest}
+        />
+        <InvalidFeedback>
+          {error?.message}
+          &nbsp;
+        </InvalidFeedback>
+      </Container>
+    );
+  },
+);
 
 export default React.memo(InputMask);

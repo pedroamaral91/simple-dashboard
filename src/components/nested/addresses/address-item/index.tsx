@@ -29,7 +29,7 @@ const AddrresItem: React.FC<AddrresItemProps> = ({
   return (
     <>
       <ItemContainer>
-        <InputMask
+        {/* <InputMask
           onBlur={onBlur}
           name="cep"
           onChange={onChange}
@@ -77,7 +77,7 @@ const AddrresItem: React.FC<AddrresItemProps> = ({
         />
         <DeleteButton type="button" onClick={handleDelete}>
           <Icon icon="FaTrash" />
-        </DeleteButton>
+        </DeleteButton> */}
       </ItemContainer>
     </>
   );

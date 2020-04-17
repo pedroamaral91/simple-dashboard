@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@store": ["src/store/state"],
+      "@hooks": ["src/hooks"],
+      "@components/*": ["src/components/*"],
+      "@styles/*": ["src/styles/*"],
+      "@api": ["src/services/api"]
+    }
+  }
+}

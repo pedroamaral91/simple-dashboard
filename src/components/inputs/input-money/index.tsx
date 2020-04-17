@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import formatCurrency from '../../../helpers/Money';
-import { Container, Label, Input, InvalidFeedback } from '../input-text/styles';
+import { Container, Label, Input } from '../input-text/styles';
 
 interface InputMoneyProps {
   name: string;
@@ -95,14 +95,14 @@ const InputMoney = ({
 
       <Input
         name={name}
-        error={error}
+        // error={error}
         value={maskedValue}
         onChange={handleChange}
         disabled={disabled}
         onBlur={handleBlur}
       />
 
-      {error && <InvalidFeedback>{error}</InvalidFeedback>}
+      {/* {error && <InvalidFeedback>{error}</InvalidFeedback>} */}
     </Container>
   );
 };

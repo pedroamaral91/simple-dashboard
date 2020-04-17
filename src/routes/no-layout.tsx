@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Route } from 'react-router-dom';
 
 interface NoLaoyutProps {
@@ -14,7 +14,9 @@ const NoLayout: React.FC<NoLaoyutProps> = ({
   path,
 }) => (
   <Route exact={exact} path={path}>
-    <Component />
+    <Suspense fallback={<div>loading..</div>}>
+      <Component />
+    </Suspense>
   </Route>
 );
 
