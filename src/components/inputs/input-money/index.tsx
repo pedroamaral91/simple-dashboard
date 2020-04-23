@@ -66,12 +66,12 @@ function InputMoney({
 
       updateValues(event.target.value);
     },
-    [maskedValue, onChange, updateValues],
+    [updateValues],
   );
 
   const handleBlur = useCallback(() => {
     onChange(numericValue, maskedValue);
-  }, [numericValue, maskedValue]);
+  }, [numericValue, maskedValue, onChange]);
 
   useEffect(() => {
     const currentValue = formatCurrency(value);
