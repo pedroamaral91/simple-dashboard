@@ -5,7 +5,7 @@ import { Container, Label, Input, InvalidFeedback } from '../input-text/styles';
 interface InputMoneyProps {
   name: string;
   value: number;
-  onChange(value: number, maskedValue: string): void;
+  onChange(value: number): void;
 
   error?: string;
   label?: string;
@@ -13,7 +13,7 @@ interface InputMoneyProps {
   height?: string;
   disabled?: boolean;
 }
-function InputMoney({
+const InputMoney = ({
   name,
   value,
   onChange,
@@ -22,9 +22,9 @@ function InputMoney({
   width,
   height,
   disabled = false,
-}: InputMoneyProps) {
-  const [maskedValue, setMaskedValue] = useState<string>('0');
-  const [numericValue, setNumericValue] = useState<number>(0);
+}: InputMoneyProps) => {
+  const [maskedValue, setMaskedValue] = useState<string>(String(value));
+  const [numericValue, setNumericValue] = useState<number>(value);
 
   const normalizeValue = useCallback((number: string) => {
     return Number(number.toString().replace(/[^0-9-]/g, '')) / 10 ** 2;
@@ -70,8 +70,8 @@ function InputMoney({
   );
 
   const handleBlur = useCallback(() => {
-    onChange(numericValue, maskedValue);
-  }, [numericValue, maskedValue, onChange]);
+    onChange(numericValue);
+  }, [numericValue, onChange]);
 
   useEffect(() => {
     const currentValue = formatCurrency(value);
@@ -105,6 +105,6 @@ function InputMoney({
       {error && <InvalidFeedback>{error}</InvalidFeedback>}
     </Container>
   );
-}
+};
 
 export default React.memo(InputMoney);
