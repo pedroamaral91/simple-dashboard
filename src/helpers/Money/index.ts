@@ -8,5 +8,5 @@ export default function formatCurrency(value: number) {
     maximumFractionDigits: 2,
   });
 
-  return formatter.format(Big(value));
+  return formatter.format(Number(Big(value)));
 }

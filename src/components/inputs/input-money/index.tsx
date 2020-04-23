@@ -5,11 +5,7 @@ import { Container, Label, Input, InvalidFeedback } from '../input-text/styles';
 interface InputMoneyProps {
   name: string;
   value: number;
-  onChange(
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: number,
-    maskedValue: string,
-  ): void;
+  onChange(value: number, maskedValue: string): void;
 
   error?: string;
   label?: string;
@@ -28,6 +24,7 @@ function InputMoney({
   disabled = false,
 }: InputMoneyProps) {
   const [maskedValue, setMaskedValue] = useState<string>('0');
+  const [numericValue, setNumericValue] = useState<number>(0);
 
   const normalizeValue = useCallback((number: string) => {
     return Number(number.toString().replace(/[^0-9-]/g, '')) / 10 ** 2;
@@ -56,6 +53,7 @@ function InputMoney({
       const maskedValueReplaced = calculatedMaskedValue.replace('R$', '');
 
       setMaskedValue(maskedValueReplaced);
+      setNumericValue(calculatedValue);
 
       return [calculatedValue, maskedValueReplaced];
     },
@@ -66,25 +64,26 @@ function InputMoney({
     (event: React.ChangeEvent<HTMLInputElement>) => {
       event.preventDefault();
 
-      const [valueUpdated, maskedValueUpdated] = updateValues(
-        event.target.value,
-      );
-
-      if (maskedValue) {
-        onChange(event, valueUpdated, maskedValueUpdated);
-      }
+      updateValues(event.target.value);
     },
     [maskedValue, onChange, updateValues],
   );
+
+  const handleBlur = useCallback(() => {
+    onChange(numericValue, maskedValue);
+  }, [numericValue, maskedValue]);
 
   useEffect(() => {
     const currentValue = formatCurrency(value);
 
     // Aplico desestruturação e pego o 2º parâmetro que contém o valor atual mascarado
-    const [, currentMaskedValue] = calculateValues(currentValue);
+    const [currentNumericValue, currentMaskedValue] = calculateValues(
+      currentValue,
+    );
 
     // Atualizo o estado da máscara
     setMaskedValue(currentMaskedValue);
+    setNumericValue(currentNumericValue);
   }, [value, calculateValues]);
 
   return (
@@ -100,6 +99,7 @@ function InputMoney({
         value={maskedValue}
         onChange={handleChange}
         disabled={disabled}
+        onBlur={handleBlur}
       />
 
       {error && <InvalidFeedback>{error}</InvalidFeedback>}
