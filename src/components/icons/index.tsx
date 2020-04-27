@@ -12,6 +12,8 @@ import {
   FaDelicious,
   FaUserAlt,
   FaArrowDown,
+  FaTrash,
+  FaPlus,
 } from 'react-icons/fa';
 import { MdPeople } from 'react-icons/md';
 
@@ -32,6 +34,8 @@ const Icon: React.FC<IconProps> = ({ icon }) => {
     ['FaCog', <FaCog />],
     ['FaLock', <FaLock />],
     ['FaDelicious', <FaDelicious />],
+    ['FaTrash', <FaTrash />],
+    ['FaPlus', <FaPlus />],
   ]);
 
   return <>{icons.has(icon) ? icons.get(icon) : null}</>;
