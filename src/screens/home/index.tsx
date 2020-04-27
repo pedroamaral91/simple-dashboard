@@ -1,21 +1,37 @@
-import React, { useState } from 'react';
-import { SelectCommon } from '../../components/select';
+import React, { useState, useCallback } from 'react';
+
+import { NestedEmails } from '../../components/nested';
+
+interface Email {
+  id: string;
+  email: string;
+}
 
 const Home = () => {
-  const [category, setCategory] = useState('');
+  const [emails, setEmails] = useState<Email[]>([]);
 
+  const handleChangeEmails = useCallback(
+    values => {
+      setEmails(values);
+    },
+    [emails],
+  );
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <h1>Hoome</h1>
-      <h1>Hoome</h1>
+    <>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        {emails.map(email => {
+          return <p> {JSON.stringify(email)}</p>;
+        })}
+      </div>
 
-      <SelectCommon
-        label="teste"
-        value={category}
-        onChange={setCategory}
-        options={[{ value: 1, label: 'teste' }]}
-      />
-    </div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <NestedEmails
+          onChange={handleChangeEmails}
+          label="Emails"
+          values={emails}
+        />
+      </div>
+    </>
   );
 };
 
