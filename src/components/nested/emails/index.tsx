@@ -1,27 +1,31 @@
 import React, { useCallback, useMemo, useState, useEffect } from 'react';
 import { uuid } from 'uuidv4';
 import { AddButton, ContainerNested, Header, Label } from '../styles';
-import EmailItem from './EmailItem';
+
+import EmailItem from './email-item';
 import Icon from '../../icons';
-import Display from '../../Display';
 
 interface Email {
-  id: string | number;
+  id: string;
   email: string;
-  added?: boolean;
-  deleted?: boolean;
 }
 
 interface NestedEmailsProps {
+  label?: string;
   values: Email[];
+  onChange(emails: Email[]): void;
 }
 
-const NestedEmails: React.FC<NestedEmailsProps> = ({ values }) => {
+const NestedEmails: React.FC<NestedEmailsProps> = ({
+  label,
+  values,
+  onChange,
+}) => {
   const [emails, setEmails] = useState<Email[]>(values);
 
   const handleChangeEmails = useCallback(
     (e, id) => {
-      const currentEmails = emails.map(email => {
+      const currentEmails = emails.map((email: Email) => {
         if (email.id === id) {
           return { ...email, email: e.target.value };
         }
@@ -33,48 +37,46 @@ const NestedEmails: React.FC<NestedEmailsProps> = ({ values }) => {
   );
 
   const handleAddEmail = useCallback(() => {
-    const newEmail = { id: uuid(), email: '', added: true, deleted: false };
-    setEmails([...emails, newEmail]);
-  }, [emails]);
+    const newEmail = {
+      id: uuid(),
+      email: '',
+    };
+    onChange([...emails, newEmail]);
+  }, [emails, onChange]);
 
   const handleDeleteEmails = useCallback(
     id => {
-      const currentEmails = emails.map(email => {
-        if (email.id === id) {
-          return { ...email, deleted: true, created: false };
-        }
-        return email;
-      });
-      setEmails(currentEmails);
+      const currentEmails = emails.filter(email => email.id !== id);
+      onChange(currentEmails);
     },
-    [emails],
+    [emails, onChange],
   );
+
+  const handleBlur = useCallback(() => {
+    onChange(emails);
+  }, [emails, onChange]);
 
   const renderEmails = useMemo(() => {
     const currentEmails = emails.map(email => (
-      <Display display={!email.deleted}>
-        <EmailItem
-          key={email.id}
-          onChange={e => handleChangeEmails(e, email.id)}
-          value={email.email}
-          handleDelete={() => handleDeleteEmails(email.id)}
-        />
-      </Display>
+      <EmailItem
+        key={email.id}
+        value={email.email}
+        onChange={e => handleChangeEmails(e, email.id)}
+        handleDelete={() => handleDeleteEmails(email.id)}
+        onBlur={handleBlur}
+      />
     ));
     return currentEmails;
-  }, [emails, handleChangeEmails]);
+  }, [emails, handleChangeEmails, handleBlur, handleDeleteEmails]);
 
   useEffect(() => {
-    const parseEmails = emails.map(item => {
-      return { ...item, added: false, deleted: false };
-    });
-    setEmails(parseEmails);
-  }, []);
+    setEmails(values);
+  }, [values]);
 
   return (
     <ContainerNested>
       <Header>
-        <Label>Emails</Label>
+        <Label>{label && label}</Label>
         <AddButton type="button" onClick={handleAddEmail}>
           <Icon icon="FaPlus" />
         </AddButton>

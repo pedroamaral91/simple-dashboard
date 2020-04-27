@@ -15,7 +15,7 @@ export interface InputProps {
   width?: string;
   height?: string;
   type?: 'text' | 'password' | 'number';
-  style?: any;
+  onBlur?(): void;
 }
 
 const InputText: React.FC<InputProps> = ({
@@ -28,7 +28,7 @@ const InputText: React.FC<InputProps> = ({
   width,
   height,
   type = 'text',
-  style = {},
+  onBlur,
 }) => {
   return (
     <Container style={{ width, height }}>
@@ -44,7 +44,7 @@ const InputText: React.FC<InputProps> = ({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-       
+        onBlur={onBlur}
       />
 
       {error && <InvalidFeedback>{error}</InvalidFeedback>}
