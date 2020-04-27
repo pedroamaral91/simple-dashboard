@@ -15,8 +15,9 @@ export interface InputProps {
 
   width?: string;
   height?: string;
-  type?: 'text' | 'password' | 'number';
+  type?: string;
   mask: MaskType;
+  onBlur?(): void;
 }
 
 const InputMask: React.FC<InputProps> = ({
@@ -29,6 +30,7 @@ const InputMask: React.FC<InputProps> = ({
   width,
   height,
   type = 'text',
+  onBlur,
   mask,
 }) => {
   const handleChange = useCallback(
@@ -52,6 +54,7 @@ const InputMask: React.FC<InputProps> = ({
         value={value}
         placeholder={placeholder}
         onChange={handleChange}
+        onBlur={onBlur}
       />
 
       {error && <InvalidFeedback>{error}</InvalidFeedback>}
