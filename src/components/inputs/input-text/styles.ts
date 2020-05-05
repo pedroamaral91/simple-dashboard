@@ -64,7 +64,7 @@ export const Input = styled.input<InputProps>`
   }
 
   &:disabled {
-    background: #CCC;
+    background: #ccc;
   }
 `;
 
