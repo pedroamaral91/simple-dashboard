@@ -62,6 +62,10 @@ export const Input = styled.input<InputProps>`
   &::placeholder {
     opacity: 1;
   }
+
+  &:disabled {
+    background: #CCC;
+  }
 `;
 
 export const InvalidFeedback = styled.span`
