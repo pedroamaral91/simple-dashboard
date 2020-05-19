@@ -36,5 +36,9 @@ declare module 'styled-components' {
         dark: string;
       };
     };
+    focus: {
+      danger: string;
+      primary: string;
+    };
   }
 }

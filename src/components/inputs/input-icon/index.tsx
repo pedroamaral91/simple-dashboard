@@ -1,34 +1,65 @@
 import React from 'react';
 
-import { Container, Input, IconWrapper } from './styles';
+import {
+  Container,
+  Label,
+  WrapperInput,
+  Input,
+  IconWrapper,
+  InvalidFeedback,
+} from './styles';
+
 import Icon from '../../icons';
 
-interface InputIcon {
-  icon: string;
-  placeholder?: string;
-  type?: string;
-  value: number | string;
+export interface InputProps {
+  name: string;
+  value: string | number;
+
   onChange(e: React.ChangeEvent<HTMLInputElement>): void;
+  label?: string;
+  placeholder?: string;
+
+  error?: string;
+
+  width?: string;
+  height?: string;
+  type?: 'text' | 'password' | 'number';
+  icon: string;
 }
 
-const InputIcon: React.FC<InputIcon> = ({
-  icon,
-  placeholder,
-  type = 'text',
+const InputIcon: React.FC<InputProps> = ({
+  label = '',
+  name,
   value,
+  placeholder = '',
   onChange,
+  error = '',
+  width,
+  height,
+  type = 'text',
+  icon,
 }) => (
-  <Container>
-    <IconWrapper>
-      <Icon icon={icon} />
-    </IconWrapper>
-    <Input
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-    />
+  <Container style={{ width, height }}>
+    <Label>
+      {label}
+      &nbsp;
+    </Label>
+
+    <WrapperInput>
+      <IconWrapper>
+        <Icon icon={icon} />
+      </IconWrapper>
+      <Input
+        error={error}
+        type={type}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
+    </WrapperInput>
+    {error && <InvalidFeedback>{error}</InvalidFeedback>}
   </Container>
 );
 
-export default InputIcon;
+export default React.memo(InputIcon);

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import icon from '../../../assets/error.svg';
+import DatePicker from 'react-datepicker';
 
 /* Interfaces */
-interface InputProps {
+interface DatePickerProps {
   error: string;
 }
 
@@ -20,28 +20,19 @@ export const Label = styled.label`
   color: ${props => props.theme.text.colors.dark};
 `;
 
-export const Input = styled.input<InputProps>`
+export const DateInput = styled(DatePicker)<DatePickerProps>`
   display: block;
-
   padding: 0.375rem 0.75rem;
   padding-right: calc(1.5em + 0.75rem);
-
   /* background styles */
   background-color: ${props => props.theme.semantic.light};
-  background-clip: padding-box;
-
-  background-image: ${props => (props.error ? `url(${icon})` : 'none')};
-  background-repeat: no-repeat;
-  background-position: right calc(0.375em + 0.1875rem) center;
-  background-size: calc(0.75em + 0.375rem);
   background-clip: padding-box;
 
   /* font styles */
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: ${props => props.theme.semantic.dark};
-
+  color: ${props => props.theme.text.colors.dark};
   border: ${props =>
     props.error
       ? `1px solid ${props.theme.semantic.danger}`
@@ -61,10 +52,6 @@ export const Input = styled.input<InputProps>`
 
   &::placeholder {
     opacity: 1;
-  }
-
-  &:disabled {
-    background: #ccc;
   }
 `;
 

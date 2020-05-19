@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import icon from '../../../assets/error.svg';
 
 /* Interfaces */
-interface InputProps {
+interface AreaInputProps {
   error: string;
 }
 
@@ -12,6 +11,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 5px;
+
+  width: 100%;
 `;
 
 export const Label = styled.label`
@@ -20,8 +21,10 @@ export const Label = styled.label`
   color: ${props => props.theme.text.colors.dark};
 `;
 
-export const Input = styled.input<InputProps>`
+export const AreaInput = styled.textarea<AreaInputProps>`
   display: block;
+
+  resize: vertical;
 
   padding: 0.375rem 0.75rem;
   padding-right: calc(1.5em + 0.75rem);
@@ -30,17 +33,11 @@ export const Input = styled.input<InputProps>`
   background-color: ${props => props.theme.semantic.light};
   background-clip: padding-box;
 
-  background-image: ${props => (props.error ? `url(${icon})` : 'none')};
-  background-repeat: no-repeat;
-  background-position: right calc(0.375em + 0.1875rem) center;
-  background-size: calc(0.75em + 0.375rem);
-  background-clip: padding-box;
-
   /* font styles */
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: ${props => props.theme.semantic.dark};
+  color: ${props => props.theme.text.colors.dark};
 
   border: ${props =>
     props.error
@@ -61,10 +58,6 @@ export const Input = styled.input<InputProps>`
 
   &::placeholder {
     opacity: 1;
-  }
-
-  &:disabled {
-    background: #ccc;
   }
 `;
 

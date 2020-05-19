@@ -17,6 +17,7 @@ export const Content = styled.div`
 `;
 
 export const Wrapper = styled.div<WrapperProps>`
+  flex: 1;
   @media screen and (min-width: ${metrics.laptop}) {
     margin-left: ${({ isOpen }) => (isOpen ? '180px' : 0)};
     transition: margin 0.2s ease;
