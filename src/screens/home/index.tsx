@@ -1,40 +1,38 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 
-const Home = () => (
-  <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    {/* <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1>
-    <h1>Hoome</h1> */}
-  </div>
-);
+import { NestedEmails } from '../../components/nested';
+
+interface Email {
+  id: string;
+  email: string;
+}
+
+const Home = () => {
+  const [emails, setEmails] = useState<Email[]>([]);
+
+  const handleChangeEmails = useCallback(
+    values => {
+      setEmails(values);
+    },
+    [emails],
+  );
+  return (
+    <>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        {emails.map(email => {
+          return <p> {JSON.stringify(email)}</p>;
+        })}
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <NestedEmails
+          onChange={handleChangeEmails}
+          label="Emails"
+          values={emails}
+        />
+      </div>
+    </>
+  );
+};
 
 export default Home;

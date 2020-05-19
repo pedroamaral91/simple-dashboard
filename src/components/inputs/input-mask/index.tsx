@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
-import { Container, Label, Input, InvalidFeedback } from './styles';
+import { Container, Label, Input, InvalidFeedback } from '../input-text/styles';
+import { MaskType, handleMaskedValue } from '../../../helpers/Mask';
 
 export interface InputProps {
   name: string;
@@ -14,12 +15,12 @@ export interface InputProps {
 
   width?: string;
   height?: string;
-  type?: 'text' | 'password' | 'number';
+  type?: string;
+  mask: MaskType;
   onBlur?(): void;
-  disabled?: boolean;
 }
 
-const InputText: React.FC<InputProps> = ({
+const InputMask: React.FC<InputProps> = ({
   label = '',
   name,
   value,
@@ -30,8 +31,15 @@ const InputText: React.FC<InputProps> = ({
   height,
   type = 'text',
   onBlur,
-  disabled = false,
+  mask,
 }) => {
+  const handleChange = useCallback(
+    e => {
+      e.target.value = handleMaskedValue(mask, e.target.value);
+      onChange(e);
+    },
+    [onChange, mask],
+  );
   return (
     <Container style={{ width, height }}>
       <Label>
@@ -45,9 +53,8 @@ const InputText: React.FC<InputProps> = ({
         name={name}
         value={value}
         placeholder={placeholder}
-        onChange={onChange}
+        onChange={handleChange}
         onBlur={onBlur}
-        disabled={disabled}
       />
 
       {error && <InvalidFeedback>{error}</InvalidFeedback>}
@@ -55,4 +62,4 @@ const InputText: React.FC<InputProps> = ({
   );
 };
 
-export default React.memo(InputText);
+export default React.memo(InputMask);
