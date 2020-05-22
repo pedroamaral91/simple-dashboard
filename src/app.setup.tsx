@@ -12,6 +12,7 @@ import CreateGlobalStyle from './styles/global';
 import { store, persistor } from './store';
 import theme from './styles/theme';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { TemplateProvider } from './screens/template/dashboard/context';
 
 const AppSetup: React.FC = () => (

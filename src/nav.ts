@@ -35,6 +35,11 @@ const modulos: Title = {
       route: '/modulos/colaboradores',
       label: 'Colaboradores',
     },
+    {
+      icon: 'FaFileImport',
+      route: '/modulos/retorno',
+      label: 'Retorno',
+    },
   ],
 };
 
