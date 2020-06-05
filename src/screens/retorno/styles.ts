@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { theme } from '../../styles';
 
 export const DivContainer = styled.div`
   display: flex;
-  margin: 10px;
-  flex: 1;
+  margin: 30px;
   align-items: center;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
 `;
 
 export const ContainerInputFile = styled.div`
