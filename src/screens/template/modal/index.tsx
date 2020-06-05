@@ -26,6 +26,15 @@ const ModalGate: React.FC = () => {
         ),
       ),
     ],
+    [
+      'RetornoModal',
+      lazy(() =>
+        import(
+          /* webpackChunkName: "RetornoModal" */
+          '../../../components/modals/retorno-modal'
+        ),
+      ),
+    ],
   ]);
   const renderedModal = useMemo(
     () => (

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Toast, ToastBody, ToastHeader } from 'reactstrap';
+import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
-import { SelectCommon } from '../../components/select';
+import { Toast, ToastBody, ToastHeader } from 'reactstrap';
+import { FaRegFileAlt } from 'react-icons/fa';
+import { modalCreators } from '../../store/state';
 import { DivContainer, ContainerInputFile } from './styles';
 import api from '../../services/api';
-import './styles.css';
 
 interface Dados {
   data_adesao: string;
@@ -12,27 +13,25 @@ interface Dados {
 }
 
 const Retorno: React.FC = () => {
+  const dispatch = useDispatch();
   const [dados, setDados] = useState<Dados[]>([]);
-  const [tipoRetorno, setTipoRetorno] = useState('');
 
-  /*
-  async function handleFile(event) {
-    const file = event.target.files[0];
+  const closeModal = useCallback(() => {
+    dispatch(modalCreators.modalClose('RetornoModal'));
+  }, [dispatch]);
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('name', file.name);
-
-    const response = await api.post('/retorno/index', formData);
-
-    setDados(response.data);
-  }
-  */
+  const openModalRetorno = useCallback(
+    data => {
+      dispatch(modalCreators.modalOpen('RetornoModal', { closeModal, data }));
+    },
+    [dispatch, closeModal],
+  );
 
   async function uploadFile(formData) {
     const response = await api.post('/retorno/index', formData);
 
-    setDados(response.data);
+    setDados(response.data.data);
+    openModalRetorno(response.data.data);
   }
 
   function StyledDropzone(props) {
@@ -54,54 +53,20 @@ const Retorno: React.FC = () => {
     });
 
     return (
-      <div className="container">
-        <ContainerInputFile
-          {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
-        >
-          <input {...getInputProps()} />
-          <p>Arraste o arquivo aqui ou clique para selecionar...</p>
-        </ContainerInputFile>
-      </div>
+      <ContainerInputFile
+        {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
+      >
+        <input {...getInputProps()} />
+        <p>Arraste o arquivo aqui ou clique para selecionar...</p>
+      </ContainerInputFile>
     );
   }
 
   return (
     <>
       <DivContainer>
-        <div>
-          <div className="p-3 my-2 rounded">
-            <Toast>
-              <ToastHeader>Consórcio Liberação</ToastHeader>
-              <ToastBody>
-                <StyledDropzone />
-              </ToastBody>
-            </Toast>
-          </div>
-        </div>
-        <div>
-          <div className="p-3 my-2 rounded">
-            <Toast>
-              <ToastHeader>CDC</ToastHeader>
-              <ToastBody>
-                <StyledDropzone />
-              </ToastBody>
-            </Toast>
-          </div>
-        </div>
-        <div>
-          <div className="p-3 my-2 rounded">
-            <Toast>
-              <ToastHeader>Assessoria</ToastHeader>
-              <ToastBody>
-                <StyledDropzone />
-              </ToastBody>
-            </Toast>
-          </div>
-        </div>
+        <StyledDropzone />
       </DivContainer>
-      {dados.length > 0
-        ? dados.map(d => <li key={Math.random()}>{d.numero_proposta}</li>)
-        : ''}
     </>
   );
 };
