@@ -4,7 +4,7 @@ import { lighten } from 'polished';
 export const Container = styled.li`
   display: flex;
   border-bottom: ${({ theme }) =>
-    `1px solid ${lighten(0.5, theme.semantic.dark)}`};
+    `1px solid ${lighten(0.5, theme.text.colors.body)}`};
   background-color: white;
   width: 100%;
   padding: 9px;
@@ -19,7 +19,7 @@ export const Container = styled.li`
 export const RightContainer = styled.div`
   display: flex;
   align-items: center;
-  color: ${lighten(0.2, '#23282c')};
+  color: ${lighten(0.1, '#23282c')};
   font-size: 0.9em;
 `;
 

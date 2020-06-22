@@ -15,6 +15,7 @@ export const Container = styled.div<ContainerProps>`
 export const MenuAside = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.semantic.dark};
+  border-top-right-radius: 15px;
   overflow: hidden;
   width: 100%;
   height: 100%;

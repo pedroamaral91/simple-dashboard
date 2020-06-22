@@ -12,7 +12,7 @@ export const Container = styled.div`
   overflow: hidden;
   outline: 0;
   border: 0;
-  color: #f3ad2e;
+  color: #f2d627;
 `;
 
 export const UserImage = styled.img`

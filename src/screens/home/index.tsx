@@ -9,18 +9,7 @@ const Home = () => {
     dispatch(modalCreators.modalClose('SimpleModal'));
   }, [dispatch]);
 
-  const onClick = useCallback(() => {
-    dispatch(modalCreators.modalOpen('SimpleModal', { closeModal }));
-  }, [dispatch, closeModal]);
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <h1>Home</h1>
-      <button type="button" onClick={onClick}>
-        teste
-      </button>
-    </div>
-  );
+  return <div style={{ display: 'none', flexDirection: 'column' }} />;
 };
 
 export default Home;

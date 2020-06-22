@@ -40,5 +40,9 @@ declare module 'styled-components' {
       danger: string;
       primary: string;
     };
+    saura: {
+      primary: string;
+      secondary: string;
+    };
   }
 }

@@ -8,12 +8,12 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => theme.semantic.primary};
+  background-color: ${({ theme }) => theme.saura.primary};
 `;
 
 export const Content = styled.div`
   @media only screen and (min-width: ${metrics.mobileS}) {
-    width: 80%;
+    width: 85%;
     height: 60%;
     z-index: 3;
   }
@@ -44,8 +44,8 @@ export const YellowBackground = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: ${({ theme }) => theme.semantic.warning};
+  background-color: ${({ theme }) => theme.saura.secondary};
   transform: skew(0deg, -10deg);
-  margin-bottom: -200px;
+  margin-bottom: -225px;
   z-index: 0;
 `;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Container,
@@ -38,28 +38,30 @@ const InputIcon: React.FC<InputProps> = ({
   height,
   type = 'text',
   icon,
-}) => (
-  <Container style={{ width, height }}>
-    <Label>
-      {label}
-      &nbsp;
-    </Label>
+}) => {
+  const [focused, setFocused] = useState(false);
+  return (
+    <Container style={{ width, height }}>
+      <Label>{label}</Label>
 
-    <WrapperInput>
-      <IconWrapper>
-        <Icon icon={icon} />
-      </IconWrapper>
-      <Input
-        error={error}
-        type={type}
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-      />
-    </WrapperInput>
-    {error && <InvalidFeedback>{error}</InvalidFeedback>}
-  </Container>
-);
+      <WrapperInput focused={focused} error={error}>
+        <IconWrapper>
+          <Icon icon={icon} />
+        </IconWrapper>
+        <Input
+          error={error}
+          type={type}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+        />
+      </WrapperInput>
+      <InvalidFeedback>{error}</InvalidFeedback>
+    </Container>
+  );
+};
 
 export default React.memo(InputIcon);

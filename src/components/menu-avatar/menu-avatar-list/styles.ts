@@ -9,10 +9,10 @@ export const Container = styled.ul`
 `;
 
 export const Title = styled.span`
-  background-color: ${({ theme }) => theme.semantic.secondary};
-  color: ${({ theme }) => darken(0.4, theme.semantic.secondary)};
+  background-color: ${({ theme }) => theme.saura.primary};
+  color: ${({ theme }) => darken(0.1, theme.semantic.light)};
   text-align: center;
   width: 100%;
-  font-size: 0.8em;
+  font-size: 0.9em;
   padding: 5px;
 `;

@@ -15,7 +15,7 @@ interface MenuAvatarProps {
 const MenuAvatar: React.FC<MenuAvatarProps> = ({ isOpen }) => {
   const wrapperRef = useRef(null);
   const badgePerfil = useMemo(
-    () => <Badge backgroundColor="#f86c6b" content="4" />,
+    () => <Badge backgroundColor="#CC0000" content="4" />,
     [],
   );
   return (

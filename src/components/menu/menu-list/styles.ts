@@ -42,5 +42,6 @@ export const List = styled.ul<IconContainerProps>`
   height: ${({ isOpen }) => (isOpen ? '300px' : 0)};
   max-height: fit-content;
   transition: height 0.2s ease-in;
-  background-color: ${({ theme }) => darken(0.1, theme.semantic.dark)};
+  border-radius: 3px;
+  background-color: ${({ theme }) => darken(0.1, theme.saura.primary)};
 `;
