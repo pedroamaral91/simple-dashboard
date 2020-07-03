@@ -15,6 +15,7 @@ import {
   FaTrash,
   FaPlus,
   FaFileImport,
+  FaTimesCircle,
 } from 'react-icons/fa';
 import { MdPeople } from 'react-icons/md';
 
@@ -38,6 +39,7 @@ const Icon: React.FC<IconProps> = ({ icon }) => {
     ['FaTrash', <FaTrash />],
     ['FaPlus', <FaPlus />],
     ['FaFileImport', <FaFileImport />],
+    ['FaTimesCircle', <FaTimesCircle />],
   ]);
 
   return <>{icons.has(icon) ? icons.get(icon) : null}</>;
